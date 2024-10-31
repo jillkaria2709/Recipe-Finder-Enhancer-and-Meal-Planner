@@ -1,10 +1,10 @@
-import openai
+import openaiw
 import streamlit as st
 import hashlib
 import requests
 
 # API keys
-openai_api_key = st.secrets["openai_key"]
+openai.api_key = st.secrets["openai_key"]
 spoonacular_api_key = st.secrets["spoonacular_api_key"]
 
 # Initialize session state for user database if it doesn't exist
@@ -119,7 +119,7 @@ def generate_multiple_tips(recipe_description, enhancements):
     tip = recipe_description
     for enhancement in enhancements:
         prompt = f"Here is a recipe description: {tip}. How can I make it {enhancement}?"
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a helpful cooking assistant."},

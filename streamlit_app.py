@@ -1,4 +1,4 @@
-import openaiw
+import openai
 import streamlit as st
 import hashlib
 import requests
